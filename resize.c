@@ -37,7 +37,7 @@ char* resize(char *oldImage,char *newImage){
   char *description;
   ExceptionType exceptiontype;
 
-  magick_wand=NewMagickWand();
+  magick_wand=NewMagickWand();//Initialize the MagickWand
   status=IsMagickWand(magick_wand);
   if(status==MagickFalse){
 	description=MagickGetException(magick_wand,&exceptiontype);
@@ -65,7 +65,7 @@ char* resize(char *oldImage,char *newImage){
 
   MagickWriteImage(magick_wand,newImage);//write the image
 
-  DestroyMagickWand(magick_wand);
+  DestroyMagickWand(magick_wand);//Destroy the MagickWand
 
   description="done";
   return description;
