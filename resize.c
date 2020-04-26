@@ -40,7 +40,7 @@ char* resize(char *oldImage,char *newImage){
   magick_wand=NewMagickWand();//Initialize the MagickWand
   status=IsMagickWand(magick_wand);
   if(status==MagickFalse){
-	description=MagickGetException(magick_wand,&exceptiontype);
+	description=MagickGetException(magick_wand,&exceptiontype);//Get the Exception of the MagickWand Methods
 	strcat(description,"\n\tMethod : NewMagickWand()" );
 	MagickClearException(magick_wand);
 	return description;
