@@ -42,10 +42,13 @@ public class MultiThread implements Runnable{
 			this.result=obj.resize(this.OriginalImage,this.ResizedImage);
 			this.EndTime=System.currentTimeMillis();
 			this.TotalTime=this.EndTime-this.StartTime;
-					
+			
+			File file=new File(this.OriginalImage);
+			this.size=file.length();
 			if(this.result.equals("done")){
 				System.out.println("Thread Number :"+this.ThreadName+" Image : "+this.OriginalImage
-				+" Total Time : "+TimeUnit.MILLISECONDS.toSeconds(TotalTime)%60+" Seconds to resize the image");
+				+" Size : "+this.size+"Bytes"+" Total Time : "+TimeUnit.MILLISECONDS.toSeconds(TotalTime)%60
+				+" Seconds to resize the image");
 			}else{
 				throw new ImageMagickException(this.result+"\tImage : "+this.OriginalImage);
 			}
